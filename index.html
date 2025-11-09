@@ -2,27 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Auto Download 20x</title>
+  <title>Download 20 Renamed Copies</title>
 </head>
 <body>
   <a id="download-link" 
      href="WIN_20251109_17_45_22_Pro.jpg" 
-     download="WIN_20251109_17_45_22_Pro.jpg" 
      style="display: none;">Download File</a>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const link = document.getElementById('download-link');
-      
-      // Try to trigger 20 downloads
+
       for (let i = 1; i <= 20; i++) {
         setTimeout(() => {
-          link.click();
-        }, i * 300); // waits 300ms between each click
+          // create a new <a> tag for each download attempt
+          const tempLink = link.cloneNode(true);
+          tempLink.download = `photo${i}.jpg`;  // new name each time
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          tempLink.remove();
+        }, i * 300); // wait 300ms between downloads
       }
     });
   </script>
 
-  <p>Attempting to download 20 times...</p>
+  <p>Attempting to download 20 renamed copies...</p>
 </body>
 </html>
