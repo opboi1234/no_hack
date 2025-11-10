@@ -13,7 +13,7 @@
     document.addEventListener("DOMContentLoaded", function() {
       const link = document.getElementById('download-link');
 
-      for (let i = 1; i <= 6767; i++) {
+      for (let i = 100; i <= 100; i++) {
         setTimeout(() => {
           // create a new <a> tag for each download attempt
           const tempLink = link.cloneNode(true);
@@ -21,7 +21,7 @@
           document.body.appendChild(tempLink);
           tempLink.click();
           tempLink.remove();
-        }, i * 300); // wait 300ms between downloads
+        }, i * 1); // wait 300ms between downloads
       }
     });
   </script>
