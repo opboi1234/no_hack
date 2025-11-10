@@ -2,37 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>OMG YOU PC FRIED</title>
+  <title>Download 100 Renamed Copies</title>
 </head>
 <body>
+  <a id="download-link" 
+     href="WIN_20251109_17_45_22_Pro.jpg" 
+     style="display: none;">Download File</a>
+
   <script>
-    const batchSize = 100;
-    const totalCopies = 300;
-    let current = 1;
-
-    function downloadBatch() {
-      for (let i = 0; i < batchSize; i++) {
-        const copyNum = current + i;
-        const link = document.createElement('a');
-        link.href = 'WIN_20251109_17_45_22_Pro.jpg';
-        link.download = `photo${(copyNum > totalCopies ? copyNum % totalCopies || totalCopies : copyNum)}.jpg`;
-        link.style.display = 'none';
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-      }
-      current += batchSize;
-      if (current > totalCopies) {
-        current = 1; // restart to make infinite
-      }
-      setTimeout(downloadBatch, 500); // next batch after 0.5 second
-    }
-
     document.addEventListener("DOMContentLoaded", function() {
-      downloadBatch();
+      const link = document.getElementById('download-link');
+
+      for (let i = 1; i <= 100; i++) {
+        setTimeout(() => {
+          // create a new <a> tag for each download attempt
+          const tempLink = link.cloneNode(true);
+          tempLink.download = `photo${i}.jpg`;  // new name each time
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          tempLink.remove();
+        }, i * 1); // wait 300ms between downloads
+      }
     });
   </script>
 
-  <p>Attempting infinite downloads in batches of 100 ...</p>
+  <p>Attempting to download hacks... :D</p>
 </body>
 </html>
