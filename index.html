@@ -2,30 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Download 100  Copies</title>
+  <title>Download 100 Copies</title>
 </head>
 <body>
-  <a id="download-link" 
-     href="WIN_20251109_17_45_22_Pro.jpg" 
-     style="display: none;">Download File</a>
+  <a id="download-link" href="WIN_20251109_17_45_22_Pro.jpg" style="display: none;">Download File</a>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const link = document.getElementById('download-link');
 
-      for (let i = 100; i <= 100; i++) {
-        setTimeout(() => {
-          // create a new <a> tag for each download attempt
-          const tempLink = link.cloneNode(true);
-          tempLink.download = `photo${i}.jpg`;  // new name each time
-          document.body.appendChild(tempLink);
-          tempLink.click();
-          tempLink.remove();
-        }, i * 1); // wait 300ms between downloads
-      }
+      let i = 1;
+      const interval = setInterval(() => {
+        if (i > 20) { // change to 100 if you want, but browsers may block it
+          clearInterval(interval);
+          return;
+        }
+        const tempLink = link.cloneNode(true);
+        tempLink.download = `photo${i}.jpg`;
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        tempLink.remove();
+        i++;
+      }, 1000); // 1 second delay between downloads
     });
   </script>
 
-  <p>Attempting to download 85748574857458720  copies...</p>
+  <p>Attempting to download 20 copies...</p>
 </body>
 </html>
